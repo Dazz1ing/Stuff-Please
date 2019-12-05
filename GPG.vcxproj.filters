@@ -56,6 +56,9 @@
     <Filter Include="MyPG\Tasks\Result">
       <UniqueIdentifier>{20ac7732-8645-4494-9058-273f5a6d8819}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MyPG\Tasks\Pause">
+      <UniqueIdentifier>{68055a81-63b6-4e74-8c1b-42d673726fda}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="myLib.cpp">
