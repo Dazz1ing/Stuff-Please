@@ -1,70 +1,19 @@
-Easing functions C++
+Stuff, Please
 ================
 
-30 easing functions implemented in C++. <br/>
-More info how functions look like and their behaviour on [easings.net](http://easings.net/).
+This game is 3909 - Papers,Please`s Fan-Made game.
 
-
-How to use
+How to Play
 -----
-Include h-file.
+KeyBoard(Temporary)
 
-    #include "easing.h"
+    Start - X
+    Pause - Z
+    Carrier Status Choice - Q,W,E,R,A,S
+    
 
-After that there are two ways:
+Mouse
 
-1. Just call one of the 30 implemented functions:
-      
-        easeInSine( 0.5 );
-
-2. Or to make functions calls more unified, you can use the help-function (getEasingFunction) to get the pointer to the needed function and call it:
-
-
-        auto easingFunction = getEasingFunction( EaseInExpo );
-        double progress = easingFunction( 0.5 );	// 0.058
-
-        easingFunction = getEasingFunction( EaseOutQuint );
-        progress = easingFunction( 0.5 );	//0.968
-  
-
-Function that returns needed pointer has the following definition:
-
-    typedef double(*easingFunction)(double);
-    easingFunction getEasingFunction( easing_functions function );
-
-And accept one the enums:
-
-    enum easing_functions
-    {
-      EaseInSine,
-    	EaseOutSine,
-    	EaseInOutSine,
-    	EaseInQuad,
-    	EaseOutQuad,
-    	EaseInOutQuad,
-    	EaseInCubic,
-    	EaseOutCubic,
-    	EaseInOutCubic,
-    	EaseInQuart,
-    	EaseOutQuart,
-    	EaseInOutQuart,
-    	EaseInQuint,
-    	EaseOutQuint,
-    	EaseInOutQuint,
-    	EaseInExpo,
-    	EaseOutExpo,
-    	EaseInOutExpo,
-    	EaseInCirc,
-    	EaseOutCirc,
-    	EaseInOutCirc,
-    	EaseInBack,
-    	EaseOutBack,
-    	EaseInOutBack,
-    	EaseInElastic,
-    	EaseOutElastic,
-    	EaseInOutElastic,
-    	EaseInBounce,
-    	EaseOutBounce,
-    	EaseInOutBounce
-    };
-        
+    Focusing - Left Click
+    Belt Speed Down - Wheel Up/Down
+    
