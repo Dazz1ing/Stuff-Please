@@ -163,6 +163,9 @@
     <ClCompile Include="Task_IDList.cpp">
       <Filter>MyPG\Tasks\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Task_Pause.cpp">
+      <Filter>MyPG\Tasks\Pause</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myLib.h">
@@ -266,6 +269,9 @@
     </ClInclude>
     <ClInclude Include="Task_IDList.h">
       <Filter>MyPG\Tasks\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Task_Pause.h">
+      <Filter>MyPG\Tasks\Pause</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
