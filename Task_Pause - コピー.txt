@@ -1,0 +1,127 @@
+//-------------------------------------------------------------------
+//
+//-------------------------------------------------------------------
+#include  "MyPG.h"
+#include  "Task_Pause.h"
+
+namespace  Pause
+{
+	Resource::WP  Resource::instance;
+	//-------------------------------------------------------------------
+	//(I%$B!&(I=!<%9$N=$Br6!&(I=(B
+	bool  Resource::Initialize()
+	{
+		this->img = DG::Image::Create("./data/image/pause.jpg");
+		return true;
+	}
+	//-------------------------------------------------------------------
+	//(I%$B!&(I=!<%9$N2$B„L!&(B
+	bool  Resource::Finalize()
+	{
+		this->img.reset();
+		return true;
+	}
+	//-------------------------------------------------------------------
+	//(I!V=$Br6!&(I=!W%?%9%/@8@.;(Bþ(I$K#12$B†&(I@$19T$&=$BpO(Bý
+	bool  Object::Initialize()
+	{
+		//(I%9!<%Q!<%/%$Br'(I9=$Br6!&(I=(B
+		__super::Initialize(defGroupName, defName, true);
+		//(I%$B!&(I=!<%9%/%$Br'(I9@8@.(Bor(I%$B!&(I=!<%96&M-(B
+		this->res = Resource::Create();
+
+		//(I!$Byi(IG!<%?=$Br6!&(I=(B
+		this->render2D_Priority[1] = 0.05f;
+		//(I!$Byi(I?%9%/$N@8@.(B
+
+		return  true;
+	}
+	//-------------------------------------------------------------------
+	//(I!V=*N;!W%?%9%/>CLG;(Bþ(I$K#12$B†&(I@$19T$&=$BpO(Bý
+	bool  Object::Finalize()
+	{
+		//(I!$Byi(IG!<%?!$BŠ'(I?%9%/2$B„L!&(B
+
+
+		if (!ge->QuitFlag() && this->nextTaskCreate) {
+			//(I!$Bytyh(I-7Q$.%?%9%/$N@8@.(B
+			
+		}
+
+		return  true;
+	}
+	//-------------------------------------------------------------------
+	//(I!V99?7!W#1%U%$B!&(I<%$B`Mp&(IK9T$&=$BpO(Bý
+	void  Object::UpDate()
+	{
+		auto inp = ge->in1->GetState();
+
+		if (inp.SE.down) {
+			//(I<+?H$K>CLGMW@A(B
+			this->Kill();
+		}
+	}
+	//-------------------------------------------------------------------
+	//(I!V#2#DIA2$Bp#(IW#1%U%$B!&(I<%$B`Mp&(IK9T$&=$BpO(Bý
+	void  Object::Render2D_AF()
+	{
+		ML::Box2D draw(0, 0, ge->screenWidth, ge->screenHeight);
+		ML::Box2D src(0, 0, 700, 394);
+		res->img->Draw(draw, src);
+	}
+
+	//(I!$Byeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeye!&(B
+	//(I0J2<$O4$B€M(I\E*$KJQ99ITMW$J%$Bb'(I=%C%I(B
+	//(I!$Byeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeyeye!&(B
+	//-------------------------------------------------------------------
+	//(I%?%9%/@8@.A$B!&(Bý
+	Object::SP  Object::Create(bool  flagGameEnginePushBack_)
+	{
+		Object::SP  ob = Object::SP(new  Object());
+		if (ob) {
+			ob->me = ob;
+			if (flagGameEnginePushBack_) {
+				ge->PushBack(ob);//(I%2!<%$B`'(I(%$B†'(I8%$B†&(IKEPO?(B
+			}
+			if (!ob->B_Initialize()) {
+				ob->Kill();//(I%$%K%7%$Bf'r'(I$%:$K<:GT$7$?$$Bq,(Bill
+			}
+			return  ob;
+		}
+		return nullptr;
+	}
+	//-------------------------------------------------------------------
+	bool  Object::B_Initialize()
+	{
+		return  this->Initialize();
+	}
+	//-------------------------------------------------------------------
+	Object::~Object() { this->B_Finalize(); }
+	bool  Object::B_Finalize()
+	{
+		auto  rtv = this->Finalize();
+		return  rtv;
+	}
+	//-------------------------------------------------------------------
+	Object::Object() {	}
+	//-------------------------------------------------------------------
+	//(I%$B!&(I=!<%9%/%$Br'(I9$N@8@.(B
+	Resource::SP  Resource::Create()
+	{
+		if (auto sp = instance.lock()) {
+			return sp;
+		}
+		else {
+			sp = Resource::SP(new  Resource());
+			if (sp) {
+				sp->Initialize();
+				instance = sp;
+			}
+			return sp;
+		}
+	}
+	//-------------------------------------------------------------------
+	Resource::Resource() {}
+	//-------------------------------------------------------------------
+	Resource::~Resource() { this->Finalize(); }
+}
