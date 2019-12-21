@@ -116,6 +116,7 @@
     <ClCompile Include="Task_Result.cpp" />
     <ClCompile Include="Task_Stuff.cpp" />
     <ClCompile Include="Task_StuffAppear.cpp" />
+    <ClCompile Include="Task_TimeOver.cpp" />
     <ClCompile Include="Task_Title.cpp" />
     <ClCompile Include="Task_XRay.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="Task_Result.h" />
     <ClInclude Include="Task_Stuff.h" />
     <ClInclude Include="Task_StuffAppear.h" />
+    <ClInclude Include="Task_TimeOver.h" />
     <ClInclude Include="Task_Title.h" />
     <ClInclude Include="Task_XRay.h" />
     <ClInclude Include="xnacollision.h" />
